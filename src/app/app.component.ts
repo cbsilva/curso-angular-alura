@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import { PhotoService } from './photos/photo/photo.service';
-import { Photos } from './photos/photo/photos';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +7,4 @@ import { Photos } from './photos/photo/photos';
 })
 export class AppComponent {
   title = 'alurapic';
-
-  photos: Photos[] = [ ];
-
-  constructor(photoService: PhotoService){
-    photoService.listFromUser('flavio')
-      .subscribe((photos) => {
-        console.log(photos[0].postDate);
-        this.photos = (photos);
-    });
-  }
-
-
 }
