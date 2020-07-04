@@ -1,12 +1,18 @@
-<div class="text-center mt-3 mb-3">
-    <form>
-        <input
-            class="rounded"
-            type="search"
-            placeholder="search..."
-            (keyup) = "filter = $event.target.value"
-            autofocus>
-    </form>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+    </a>
+    <div class=""  id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" 
+                class="rounded"
+                type="search"
+                placeholder="search..."
+                (keyup) = "filter = $event.target.value"
+                autofocus>
+        </form>
+    </div>
+</nav>
+<div class="container">
+    <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
 </div>
-{{ filter | uppercase }}
-<ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
