@@ -8,7 +8,7 @@
                 class="rounded"
                 type="search"
                 placeholder="search..."
-                (keyup) = "filter = $event.target.value"
+                (keyup) = "debounce.next($event.target.value)"
                 autofocus>
         </form>
     </div>
