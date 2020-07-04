@@ -11,6 +11,7 @@ import { Photo } from '../photo/photo';
 export class PhotoListComponent implements OnInit {
 
   photos: Photo[] = [];
+  filter = '';
 
   constructor(
     private photoService: PhotoService,
@@ -23,8 +24,8 @@ export class PhotoListComponent implements OnInit {
     const username = this.activatedRouter.snapshot.params.username;
 
     this.photoService.listFromUser(username)
-    .subscribe((photos) => {
+      .subscribe((photos) => {
       this.photos = (photos);
-  });
+    });
   }
 }
