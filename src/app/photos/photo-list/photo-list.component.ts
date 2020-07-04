@@ -13,17 +13,16 @@ import { PhotoService } from '../photo/photo.service';
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
 
-  public photos: Photo[] = [];
-  public filter = '';
-  public debounce: Subject<string> = new Subject<string>();
-  public hasMore = true;
-
-  private currentPage = 1;
-  private userName = '';
+  photos: Photo[] = [];
+  filter = '';
+  debounce: Subject<string> = new Subject<string>();
+  hasMore = true;
+  currentPage = 1;
+  userName = '';
 
   constructor(
     private activatedRouter: ActivatedRoute,
-    private service: PhotoService
+    private photoService: PhotoService
   ){ }
 
   ngOnDestroy(): void {
@@ -41,13 +40,13 @@ export class PhotoListComponent implements OnInit, OnDestroy {
 
   load()
   {
-    this.service
+    this.photoService
         .listFromUserPagineted(this.userName, ++this.currentPage)
         .subscribe(photos => {
           this.photos = this.photos.concat(photos);
-          if (!this.photos.length) {
-            this.hasMore = false;
-          }
+
+          // tslint:disable-next-line: curly
+          if (this.photos.length) this.hasMore = false;
     });
   }
 }
