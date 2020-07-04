@@ -15,4 +15,8 @@
 </nav>
 <div class="container">
     <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+    <ap-load-button 
+        [hasMore]="hasMore"
+        (click)="load()"
+    ></ap-load-button>
 </div>
