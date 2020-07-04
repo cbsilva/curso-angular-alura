@@ -14,18 +14,10 @@ export class PhotoListComponent implements OnInit {
   filter = '';
 
   constructor(
-    private photoService: PhotoService,
     private activatedRouter: ActivatedRoute
   ){ }
 
   ngOnInit(): void {
-
-    // recupera a informacao da rota corrente
-    const username = this.activatedRouter.snapshot.params.username;
-
-    this.photoService.listFromUser(username)
-      .subscribe((photos) => {
-      this.photos = (photos);
-    });
+    this.photos = this.activatedRouter.snapshot.data.photos;
   }
 }
