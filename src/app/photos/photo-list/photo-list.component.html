@@ -1,21 +1,5 @@
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
-    </a>
-    <div class=""  id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
-            <i aria-hidden="true" class="fa fa-search mr-1"></i>
-            <input class="form-control mr-sm-2" 
-                class="rounded"
-                type="search"
-                placeholder="search..."
-                (keyup) = "debounce.next($event.target.value)"
-                autofocus>
-        </form>
-    </div>
-</nav>
-
 <div class="container">
+    <ap-search (onTyping)="filter = $event"></ap-search>
     <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
     <ap-load-button 
         [hasMore]="hasMore"
