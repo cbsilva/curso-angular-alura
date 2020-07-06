@@ -10,18 +10,18 @@ const API = 'http://localhost:3000';
 })
 export class PhotoService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
-    listFromUser(usernanme: string)
+    listFromUser(userName: string)
     {
         return this.http
-            .get<Photo[]>(`${API}/${usernanme}/photos`);
+            .get<Photo[]>(`${API}/${userName}/photos`);
     }
 
-    listFromUserPagineted(usernanme: string, page: number)
+    listFromUserPagineted(userName: string, page: number)
     {
         const params = new HttpParams().append('page',  page.toString());
         return this.http
-            .get<Photo[]>(`${API}/${usernanme}/photos`, { params });
+            .get<Photo[]>(`${API}/${userName}/photos`, { params });
     }
 }

@@ -35,6 +35,8 @@ export class PhotoListComponent implements OnInit {
     this.photoService
         .listFromUserPagineted(this.userName, ++this.currentPage)
         .subscribe(photos => {
+          this.filter = '';
+          console.log('teste', ++this.currentPage);
           this.photos = this.photos.concat(photos);
 
           // tslint:disable-next-line: curly
