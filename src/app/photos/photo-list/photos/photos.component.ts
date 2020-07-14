@@ -27,6 +27,6 @@ export class PhotosComponent implements OnChanges {
         newRows.push(photos.slice(index, index + 3));
     }
     return newRows;
-}
+  }
 
 }
