@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth.service';
 import { Router } from '@angular/router';
@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  public isMessage = false;
+  public message = '';
 
   loginForm: FormGroup;
 
-  public isMessage = false;
-  public message = '';
+  @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +45,7 @@ export class SigninComponent implements OnInit {
             this.message = 'Invalid user name or password';
             this.isMessage = true;
             this.loginForm.reset();
+            this.userNameInput.nativeElement.focus();
           }
         );
   }
